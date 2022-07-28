@@ -7,16 +7,14 @@ pub struct Directions {
 }
 
 #[derive(Debug, Clone)]
-
 pub struct Movement {
     pub direction: &'static str,
-    pub move_to: i16,
+    pub move_to: i8,
 }
 
 #[derive(Debug)]
 pub struct Room {
-    pub name: String,
-    pub description: String,
+    pub name: &'static str,
     pub directional_moves: Vec<Movement>,
     pub items: Vec<String>,
 }
