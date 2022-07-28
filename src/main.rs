@@ -1,3 +1,10 @@
+mod game_data;
+use game_data::get_rooms;
+
 fn main() {
-    println!("Hello, world!");
+    let rooms = get_rooms();
+
+    for room in rooms {
+        println!("{}", room.description);
+    }
 }
