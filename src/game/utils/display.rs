@@ -1,4 +1,4 @@
-use crate::utils::print;
+use crate::game::utils::print;
 const TITLE: &'static str = "
 .______        ___      .__   __.  __       _______. __    __   _______ .______
 |   _  \\      /   \\     |  \\ |  | |  |     /       ||  |  |  | |   ____||   _  \\
