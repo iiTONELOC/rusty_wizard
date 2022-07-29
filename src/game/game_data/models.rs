@@ -16,3 +16,11 @@ pub struct Room {
 pub struct RoomData {
     pub rooms: Vec<Room>,
 }
+
+pub struct Game {
+    pub user_inventory: Vec<String>,
+    pub current_room: Room,
+    pub castle_rooms: RoomData,
+    pub score: i32,
+    pub num_turns: i32,
+}
