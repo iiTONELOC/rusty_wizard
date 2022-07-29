@@ -40,17 +40,22 @@ pub const ROOM_ITEMS: [&'static str; 13] = [
 ];
 
 pub const ROOM_DESCRIPTIONS: [&'static str; 13] = [
-    "You are in a meeting room. There is a large table in the center of the room.\n",
-    "You are in a gallery. There is a collection of paintings on the walls.\n",
-    "You are in a conservatory. There is a large collection of plants on the walls.\n",
-    "You are in a sitting room. There is a large table in the center of the room.\n",
-    "You are in a trophy hall. There is a collection of trophies on the walls.\n",
-    "You are in a study. There is a large desk in the center of the room.\n",
-    "You are in a summoning room. There is a large table in the center of the room.\n",
-    "You are in a court yard. There is a large table in the center of the room.\n",
-    "You are in a workshop. There is a large table in the center of the room.\n",
-    "You are in a foundry. There is a large table in the center of the room.\n",
-    "You are in a master's chamber. There is a large table in the center of the room.\n",
-    "You are in a bath. There is a large table in the center of the room.\n",
-    "You are in a kitchen. There is a large table in the center of the room.\n",
+    "\nYou are in a meeting room. There is a large table in the center of the room.\n",
+    "\nYou are in a gallery. There is a collection of paintings on the walls.\n",
+    "\nYou are in a conservatory. There is a large collection of plants on the walls.\n",
+    "\nYou are in a sitting room. There is a large table in the center of the room.\n",
+    "\nYou are in a trophy hall. There is a collection of trophies on the walls.\n",
+    "\nYou are in a study. There is a large desk in the center of the room.\n",
+    "\nYou are in a summoning room. There is a large table in the center of the room.\n",
+    "\nYou are in a court yard. There is a large table in the center of the room.\n",
+    "\nYou are in a workshop. There is a large table in the center of the room.\n",
+    "\nYou are in a foundry. There is a large table in the center of the room.\n",
+    "\nYou are in a master's chamber. There is a large table in the center of the room.\n",
+    "\nYou are in a bath. There is a large table in the center of the room.\n",
+    "\nYou are in a kitchen. There is a large table in the center of the room.\n",
 ];
+
+pub const INVALID_DIRECTION: &'static str =
+    "\n\nNot a valid direction! Type \"help\" for a list of valid directions.";
+
+pub const DIRECTION_NOT_AVAILABLE: &'static str = "\n\nYou cannot go that way from here.";

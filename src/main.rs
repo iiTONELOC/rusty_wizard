@@ -1,7 +1,8 @@
 mod game;
 
-use game::game;
+use self::game::game_data::models::Game;
 
 fn main() {
-    game()
+    let mut game = Game::new();
+    game.start();
 }
