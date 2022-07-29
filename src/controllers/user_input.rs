@@ -1,6 +1,6 @@
-use super::quit;
+use crate::utils::quit;
 
-pub fn input_controller(user_input: &str) {
+pub fn input_controller(user_input: String) {
     let is_movement = user_input.starts_with("go");
     let is_item = user_input.starts_with("get");
     let is_quit = user_input.starts_with("q") || user_input.starts_with("exit");
@@ -16,6 +16,6 @@ pub fn input_controller(user_input: &str) {
     } else if is_help {
         println!("You selected help");
     } else {
-        println!("Invalid input");
+        println!("Impossible cannot, {}, from here!", user_input);
     }
 }

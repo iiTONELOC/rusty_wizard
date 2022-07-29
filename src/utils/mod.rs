@@ -1,5 +1,4 @@
 pub mod display;
-pub mod user_input;
 use regex::Regex;
 
 // https://rust-lang.github.io/regex/regex/index.html#character-classes
