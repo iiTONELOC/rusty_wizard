@@ -3,9 +3,11 @@ mod utils;
 
 use self::game_data::get_rooms;
 use self::game_data::models::{Game, Room};
-use self::utils::display::greet_user;
+use self::utils::display::{clear, greet_user};
+use self::utils::input::prompt_user;
+use self::utils::inventory::handle_add_to_inventory;
 use self::utils::movement::handle_movement;
-use self::utils::{clear, prompt_user, quit};
+use self::utils::quit;
 
 const ENEMY_ROOM: i8 = 3;
 
@@ -55,12 +57,14 @@ impl Game {
         let is_clear = user_input.starts_with("clear") || user_input.starts_with("cls");
 
         if is_movement {
-            let next_room_number =
-                handle_movement(&user_input, self._get_current_room(), self.current_room);
-
-            self._set_current_room(next_room_number);
+            self._set_current_room(handle_movement(
+                &user_input,
+                self._get_current_room(),
+                self.current_room,
+            ));
         } else if is_item {
-            println!("You selected item");
+            let _game = self;
+            handle_add_to_inventory(&user_input, _game);
         } else if is_quit {
             quit();
         } else if is_help {

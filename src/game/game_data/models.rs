@@ -17,6 +17,7 @@ pub struct RoomData {
     pub rooms: Vec<Room>,
 }
 
+#[derive(Debug)]
 pub struct Game {
     pub user_inventory: Vec<String>,
     pub current_room: i8,
