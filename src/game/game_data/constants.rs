@@ -59,3 +59,5 @@ pub const INVALID_DIRECTION: &'static str =
     "\n\nNot a valid direction! Type \"help\" for a list of valid directions.";
 
 pub const DIRECTION_NOT_AVAILABLE: &'static str = "\n\nYou cannot go that way from here.";
+
+pub const ITEM_NOT_FOUND: &'static str = "\n\nImpossible, that item is not in this room!";
