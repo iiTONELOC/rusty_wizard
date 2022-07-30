@@ -1,3 +1,5 @@
+use crate::game::game_data::models::Room;
+
 const TITLE: &'static str = "
 .______        ___      .__   __.  __       _______. __    __   _______ .______
 |   _  \\      /   \\     |  \\ |  | |  |     /       ||  |  |  | |   ____||   _  \\
@@ -40,4 +42,34 @@ pub fn greet_user() {
 /// clears the terminal and resets the cursor position
 pub fn clear() {
     print("\x1B[2J\x1B[1;1H");
+    print(TITLE);
+}
+
+pub fn print_horizontal_rule() {
+    print("_".repeat(COL_WIDTH).as_str());
+}
+
+pub fn print_status(room: &Room, player_inventory: &Vec<String>, num_turns: usize) {
+    let items_in_room = &room.items;
+
+    // Generate the description of the room
+    let room_description = if items_in_room.len() > 0 {
+        let mut description = room.description.to_string();
+        description.push_str("\nYou see an item, the ");
+
+        description
+    } else {
+        room.description.to_string()
+    };
+
+    // Print the description of the room
+    if items_in_room.len() > 0 {
+        println!("{}{}\n", room_description, items_in_room.join(", "));
+    } else {
+        println!("{}", room_description);
+    }
+
+    print(&format!("\nInventory: {:?}\n", player_inventory));
+    print(&format!("Turns: {}", num_turns));
+    print_horizontal_rule();
 }

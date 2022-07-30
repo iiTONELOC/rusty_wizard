@@ -3,9 +3,11 @@ pub mod constants;
 
 pub mod models;
 
-use self::available_moves::available_moves;
-use self::constants::{NULL, ROOM_DESCRIPTIONS, ROOM_ITEMS, ROOM_NAMES};
-use self::models::{Room, RoomData};
+use self::{
+    available_moves::available_moves,
+    constants::{NULL, ROOM_DESCRIPTIONS, ROOM_ITEMS, ROOM_NAMES},
+    models::{Room, RoomData},
+};
 
 pub fn get_rooms() -> Vec<Room> {
     let mut rooms: Vec<Room> = Vec::new();

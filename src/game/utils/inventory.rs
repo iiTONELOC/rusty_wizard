@@ -1,6 +1,7 @@
-use crate::game::game_data::constants::ITEM_NOT_FOUND;
-use crate::game::game_data::models::Game;
-use crate::game::utils::display::print;
+use crate::game::{
+    game_data::{constants::ITEM_NOT_FOUND, models::Game},
+    utils::display::print,
+};
 
 fn get_args(user_input: &str) -> &str {
     return user_input.split("get").collect::<Vec<&str>>()[1].trim();

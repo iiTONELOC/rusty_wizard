@@ -40,9 +40,7 @@ fn input_with_message(message: &str) -> String {
     return input();
 }
 
-/// prompt the user for input and validate the input
-/// the input is validated to be a valid string of alphabetic characters and spaces only
-/// it is guaranteed to not be empty.
+/// prompts the user for input and validates it
 pub fn prompt_user(message: &str) -> String {
     let original_input = input_with_message(message);
     let user_input = validate_input(original_input);
