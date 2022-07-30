@@ -1,8 +1,10 @@
-use crate::game::game_data::constants::{
-    DIRECTION_NOT_AVAILABLE, EAST, INVALID_DIRECTION, NORTH, NULL, SOUTH, WEST,
+use crate::game::{
+    game_data::{
+        constants::{DIRECTION_NOT_AVAILABLE, EAST, INVALID_DIRECTION, NORTH, NULL, SOUTH, WEST},
+        models::Room,
+    },
+    utils::print,
 };
-use crate::game::game_data::models::Room;
-use crate::game::utils::print;
 
 /// Parses the user input and returns the direction the user wants to move to.
 /// Returns "null" if the user input is invalid.

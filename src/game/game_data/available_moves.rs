@@ -1,5 +1,7 @@
-use crate::game::game_data::constants::{EAST, NORTH, NUMBERS, SOUTH, WEST};
-use crate::game::game_data::models::Movement;
+use crate::game::game_data::{
+    constants::{EAST, NORTH, NUMBERS, SOUTH, WEST},
+    models::Movement,
+};
 
 pub fn available_moves() -> [Vec<Movement>; 13] {
     [

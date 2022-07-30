@@ -7,6 +7,6 @@ use display::print;
 
 /// exit the game
 pub fn quit() {
-    print("Goodbye!");
+    print("\nGoodbye!\n");
     std::process::exit(0);
 }
