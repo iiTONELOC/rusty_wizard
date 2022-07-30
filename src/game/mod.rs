@@ -10,7 +10,9 @@ use self::{
     },
     utils::{
         display::{clear, greet_user, print_horizontal_rule, print_status},
+        ending::handle_ending,
         input::prompt_user,
+        score::calculate_score,
     },
 };
 
@@ -22,101 +24,74 @@ impl Game {
             user_inventory: Vec::new(),
             castle_rooms: get_rooms(),
             current_room: -1,
-            score: 0,
             num_turns: -1,
+            score: 0,
         }
     }
 
-    /// Starts a new game
     pub fn start(&mut self) {
-        self._clear_terminal();
         self._reset();
         self._greet();
-
         self._play();
     }
 
-    /// Runs the game on a loop
     fn _play(&mut self) {
         self._check_if_starting_round();
         self._loop()
     }
 
-    /// Game loop
-    fn _loop(&mut self) {
-        let num_items = self._get_inventory().len();
+    // _______ INTERNAL API _________
 
-        while self.current_room != ENEMY_ROOM && num_items < 6 {
+    fn _loop(&mut self) {
+        while self.current_room != ENEMY_ROOM && self._get_inventory().len() < 6 {
             self._print_status();
             self._controller(self._prompt());
             self._increment_turns();
         }
+
+        handle_ending(self);
     }
 
-    /// Handles the user input and implements the correct behavior
     fn _controller(&mut self, user_input: String) {
-        let _game = self;
-        game_controller(user_input, _game);
+        game_controller(user_input, self);
     }
 
-    // GETTERS and SETTERS
+    // _______ GETTERS & SETTERS _________
+    //____________________________________
 
-    /// get the current inventory
-    fn _get_inventory(&self) -> &Vec<String> {
-        &self.user_inventory
+    fn _get_inventory(&self) -> Vec<String> {
+        self.user_inventory.clone()
     }
 
-    /// adds an item to inventory
-    fn _add_item_to_inventory(&mut self, item: String) {
-        self.user_inventory.push(item);
-    }
-
-    /// removes an item from inventory
-    fn _remove_item_from_inventory(&mut self, index: usize) {
-        self.user_inventory.remove(index);
-    }
-
-    /// get data about the current room
-    fn _get_current_room(&self) -> &Room {
-        &self.castle_rooms[self.current_room as usize]
-    }
-
-    /// set's the current room's index
-    fn _set_current_room(&mut self, room: i8) {
-        self.current_room = room;
-    }
-
-    /// prints the currents status of the game
-    fn _print_status(&self) {
-        print_status(
-            self._get_current_room(),
-            self._get_inventory(),
-            self._get_num_turns() as usize,
-        );
-    }
-
-    /// gets the current number of turns
     fn _get_num_turns(&self) -> i32 {
         self.num_turns
     }
 
-    /// gets the score
-    fn _get_score(&self) -> i32 {
-        self._calculate_score()
+    fn _get_score(&mut self) -> i32 {
+        self.score
     }
 
-    // increment number of turns
-    fn _increment_turns(&mut self) {
-        self.num_turns += 1;
+    fn _get_current_room(&self) -> &Room {
+        &self.castle_rooms[self.current_room as usize]
     }
 
-    // calculate score
-    fn _calculate_score(&self) -> i32 {
-        let score = (100000000 - self.num_turns) * 10;
-        score
+    fn _set_score(&mut self, score: i32) {
+        self.score = score;
     }
 
-    // UTILITY FUNCTIONS
+    fn _set_item_in_inventory(&mut self, item: String) {
+        self.user_inventory.push(item);
+    }
+
+    fn _set_current_room(&mut self, room: i8) {
+        self.current_room = room;
+    }
+
+    // _______ END GETTERS & SETTERS _________
+    //________________________________________
+
+    // _______ UTILITY FUNCTIONS _________
+    //____________________________________
 
     fn _reset(&mut self) {
         // reset game state
@@ -127,6 +102,14 @@ impl Game {
         self.score = 0;
     }
 
+    fn _print_status(&self) {
+        print_status(
+            self._get_current_room(),
+            &self._get_inventory(),
+            self._get_num_turns() as usize,
+        );
+    }
+
     fn _prompt(&self) -> String {
         let msg = prompt_user("\nWhat would you like to do?\n");
         print_horizontal_rule();
@@ -135,9 +118,17 @@ impl Game {
 
     fn _check_if_starting_round(&mut self) {
         if self.current_room == -1 {
-            self.current_room += 1;
+            self._set_current_room(0);
             self.num_turns += 2;
         }
+    }
+
+    fn _increment_turns(&mut self) {
+        self.num_turns += 1;
+    }
+
+    fn _calculate_score(&mut self) -> i32 {
+        calculate_score(self)
     }
 
     fn _greet(&self) {
@@ -145,6 +136,6 @@ impl Game {
     }
 
     fn _clear_terminal(&self) {
-        clear()
+        clear();
     }
 }

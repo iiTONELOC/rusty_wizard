@@ -21,7 +21,7 @@ pub fn handle_add_to_inventory(user_input: &str, game: &mut Game) {
     if !found {
         print(ITEM_NOT_FOUND);
     } else {
-        game._add_item_to_inventory(item.to_string());
+        game._set_item_in_inventory(item.to_string());
 
         // filter out the item from the current room's items
         game.castle_rooms[game.current_room as usize].items = game

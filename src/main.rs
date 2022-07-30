@@ -1,5 +1,4 @@
 mod game;
-
 use self::game::game_data::models::Game;
 
 fn main() {

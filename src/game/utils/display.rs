@@ -11,9 +11,9 @@ const TITLE: &'static str = "
 
 const TITLE_MESSAGE: &'static str =
     "Welcome Merlin! The evil wizard, Atlantes has ransacked the castle and is hiding \nwithin!\n
-You must collect all 6 items before facing Atlantes Or you will be exiled from \nthis realm!\n";
+You must collect all 6 items before facing Atlantes Or you will be exiled from \nthis realm!";
 
-const HELP_MESSAGE: &'static str = "You may move in the four basic directions the commands are:
+const HELP_MESSAGE: &'static str = "\nYou may move in the four basic directions the commands are:
 \"go North\", \"go South\", \"go East\", and \"go West\".\n
 To retrieve an item enter: \"get <item name>\".\n
 Each selection is a move and you have one move per turn. Choose wisely!

@@ -1,7 +1,9 @@
 pub mod display;
+pub mod ending;
 pub mod input;
 pub mod inventory;
 pub mod movement;
+pub mod score;
 
 use display::print;
 
